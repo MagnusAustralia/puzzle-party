@@ -15,7 +15,7 @@ use pyo3::prelude::*;
 /// Example:
 ///     >>> import puzzle_party
 ///     >>> sudoku = puzzle_party.generate_sudoku("medium")
-///     >>> print(sudoku)
+///     >>> print(sudoku) 
 ///     [[5, 3, 0, 0, 7, 0, 0, 0, 0], ...]
 #[pyfunction]
 fn generate_sudoku(_difficulty: &str) -> PyResult<Vec<Vec<u8>>> {
