@@ -8,7 +8,7 @@ name = "puzzle_party"
 crate-type = ["cdylib"]
 
 [dependencies]
-rand = "0.8.5"
+pyo3 = { version = "0.22.0", features = ["extension-module", "generate-import-lib"] }
 
 [dependencies.pyo3]
 version = "0.23.1"
