@@ -16,6 +16,8 @@ RUN apt-get update && apt-get install -y \
     python3-venv \
     pipx
 
+RUN pipx install maturin
+
 # Copy the rest of the source files
 COPY . .
 
