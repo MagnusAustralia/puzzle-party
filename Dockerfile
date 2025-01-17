@@ -1,23 +1,23 @@
 # Use the official Rust image as the base
 FROM rust:latest
 
-# Install dependencies for building your package
-RUN apt-get update && apt-get install -y libssl-dev pkg-config
-
-# Install maturin
-RUN pip install maturin
-
 # Set the working directory
 WORKDIR /app
 
-# Copy the Cargo.toml and Cargo.lock files
+# Copy the Cargo.toml and Cargo.lock files first
 COPY Cargo.toml Cargo.lock ./
 
-# Update Cargo if necessary
-RUN cargo update
+# Install dependencies (if needed)
+RUN apt-get update && apt-get install -y \
+    libssl-dev \
+    pkg-config \
+    python3 \
+    python3-pip \
+    python3-venv \
+    pipx
 
-# Copy the rest of the project
+# Copy the rest of the source files
 COPY . .
 
-# Build the project (if needed)
-RUN maturin build --release
+# Run cargo update and build the project
+RUN cargo update && cargo build --release
