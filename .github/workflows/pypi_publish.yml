@@ -1,4 +1,4 @@
-name: Publish to PyPI
+name: Build and Publish
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.x"  # Replace with the Python version you want to use
+          python-version: "3.x"
 
       - name: Install Rust
         uses: actions-rs/toolchain@v1
@@ -29,7 +29,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install maturin
 
-      - name: Build and publish to PyPI
+      - name: Build wheels
+        run: |
+          maturin build --release --manylinux 2014
+
+      - name: Publish to PyPI
         env:
           PYPI_USERNAME: __token__
           PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
