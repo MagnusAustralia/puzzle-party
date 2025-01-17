@@ -28,5 +28,5 @@ jobs:
         PYPI_USERNAME: __token__
         PYPI_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
       run: |
-        maturin publish --username $PYPI_USERNAME --password $PYPI_PASSWORD -b pypi testpypi
+        maturin publish --username $PYPI_USERNAME --password $PYPI_PASSWORD --repository testpypi
 
