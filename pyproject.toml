@@ -18,9 +18,10 @@ build-backend = "maturin"
 [tool.maturin]
 name = "puzzle_party"
 universal-wheels = true
-target = [
-    "x86_64-unknown-linux-gnu",
-    "aarch64-apple-darwin",
-]
+target = {
+    "x86_64-pc-windows-msvc": {},
+    "x86_64-unknown-linux-gnu": {},
+    "aarch64-apple-darwin": {},
+}
 features = ["pyo3/extension-module"]
 package = { include = ["puzzle_party.pyi"] }
